@@ -23,7 +23,7 @@ ax.legend(title='Race')
 st.pyplot(fig)
 
 
-# Adding Tenure Length to the DataFrame
+# Adding Tenure Length to the DataFrame and creating the line chart
 data.update({
     'Tenure Length': [6, 1, 4, 34, 28, 9, 14, 22, 11, 9, 11, 4, 7, 16, 17, 19, 19, 33, 27, 27, 18, 15, 14, 7, 6, 4, 2]
 })

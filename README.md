@@ -1,7 +1,7 @@
 # Supreme Court Justices and Racial Equality Cases Analysis
 
 ## Overview
-This project provides a data analysis dashboard for visualizing information about U.S. Supreme Court Justices and significant Supreme Court cases impacting racial equality. The dashboard includes several visualizations that help understand the composition and history of the Supreme Court and its influence on racial equality in the United States.
+This project provides a data analysis dashboard for visualizing information about U.S. Supreme Court Justices and significant Supreme Court cases impacting racial equality with in America. The dashboard includes several visualizations that help understand the composition and history of the Supreme Court and its influence on racial equality in the United States.
 
 ## Files in the Repository
 - `app.py`: The main Streamlit application file containing the code for the data analysis dashboard.
