@@ -1,0 +1,28 @@
+Justice,Age,Race,Year Appointed,Position,Gender,Nominated By,Party,Tenure,Tenure Length,State From
+John Jay,43,White,1789,Chief Justice,Male,George Washington,Federalist,6 years,1795,New York
+John Rutledge,50,White,1795,Chief Justice,Male,George Washington,Federalist,1 year,1795,South Carolina
+Oliver Ellsworth,50,White,1796,Chief Justice,Male,George Washington,Federalist,4 years,1800,Connecticut
+John Marshall,45,White,1801,Chief Justice,Male,John Adams,Federalist,34 years,1835,Virginia
+Roger B. Taney,59,White,1836,Chief Justice,Male,Andrew Jackson,Democratic,28 years,1864,Maryland
+Salmon P. Chase,56,White,1864,Chief Justice,Male,Abraham Lincoln,Republican,9 years,1873,Ohio
+Morrison Waite,58,White,1874,Chief Justice,Male,Ulysses S. Grant,Republican,14 years,1888,Ohio
+Melville Fuller,55,White,1888,Chief Justice,Male,Grover Cleveland,Democratic,22 years,1910,Illinois
+Edward Douglass White,65,White,1910,Chief Justice,Male,William Howard Taft,Republican,11 years,1921,Louisiana
+William Howard Taft,63,White,1921,Chief Justice,Male,Warren G. Harding,Republican,9 years,1930,Ohio
+Charles Evans Hughes,67,White,1930,Chief Justice,Male,Herbert Hoover,Republican,11 years,1941,New York
+Harlan F. Stone,68,White,1941,Chief Justice,Male,Franklin D. Roosevelt,Democratic,4 years,1946,New York
+Fred M. Vinson,56,White,1946,Chief Justice,Male,Harry S. Truman,Democratic,7 years,1953,Kentucky
+Earl Warren,62,White,1953,Chief Justice,Male,Dwight D. Eisenhower,Republican,16 years,1969,California
+Warren E. Burger,61,White,1969,Chief Justice,Male,Richard Nixon,Republican,17 years,1986,Minnesota
+William Rehnquist,66,White,1986,Chief Justice,Male,Ronald Reagan,Republican,19 years,2005,Arizona
+John Roberts,50,White,2005,Chief Justice,Male,George W. Bush,Republican,19 years,Incumbent,Maryland
+Clarence Thomas,43,Black,1991,Associate Justice,Male,George H. W. Bush,Republican,33 years,Incumbent,Georgia
+Ruth Bader Ginsburg,60,White,1993,Associate Justice,Female,Bill Clinton,Democratic,27 years,2020,New York
+Stephen Breyer,56,White,1994,Associate Justice,Male,Bill Clinton,Democratic,27 years,2022,California
+Samuel Alito,55,White,2006,Associate Justice,Male,George W. Bush,Republican,18 years,Incumbent,New Jersey
+Sonia Sotomayor,55,Hispanic,2009,Associate Justice,Female,Barack Obama,Democratic,15 years,Incumbent,New York
+Elena Kagan,50,White,2010,Associate Justice,Female,Barack Obama,Democratic,14 years,Incumbent,New York
+Neil Gorsuch,49,White,2017,Associate Justice,Male,Donald Trump,Republican,7 years,Incumbent,Colorado
+Brett Kavanaugh,53,White,2018,Associate Justice,Male,Donald Trump,Republican,6 years,Incumbent,Maryland
+Amy Coney Barrett,48,White,2020,Associate Justice,Female,Donald Trump,Republican,4 years,Incumbent,Indiana
+Ketanji Brown Jackson,51,Black,2022,Associate Justice,Female,Joe Biden,Democratic,2 years,Incumbent,Washington D.C.
