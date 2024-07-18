@@ -1,112 +1,88 @@
-import plotly.graph_objects as go
+import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
-import streamlit as st
 
-# Load the CSV files
-justices_file = 'SupremeCourt.csv'
-cases_file = 'RacialEqualityCases.csv'
-justices = pd.read_csv(justices_file)
-cases = pd.read_csv(cases_file)
-
-# Create a color mapping for states
-state_colors = {
-    'New York': 'blue', 'South Carolina': 'green', 'Connecticut': 'red', 'Virginia': 'purple',
-    'Maryland': 'orange', 'Ohio': 'brown', 'Illinois': 'pink', 'Louisiana': 'gray', 'Kentucky': 'yellow',
-    'California': 'red', 'Minnesota': 'blue', 'Arizona': 'gray', 'Georgia': 'purple', 'New Jersey': 'blue',
-    'Indiana': 'green', 'Colorado': 'pink', 'Washington D.C.': 'red'
+# Creating the DataFrame from the given data
+data = {
+    'Justice': ["John Jay", "John Rutledge", "Oliver Ellsworth", "John Marshall", "Roger B. Taney", "Salmon P. Chase", "Morrison Waite", "Melville Fuller", "Edward Douglass White", "William Howard Taft", "Charles Evans Hughes", "Harlan F. Stone", "Fred M. Vinson", "Earl Warren", "Warren E. Burger", "William Rehnquist", "John Roberts", "Clarence Thomas", "Ruth Bader Ginsburg", "Stephen Breyer", "Samuel Alito", "Sonia Sotomayor", "Elena Kagan", "Neil Gorsuch", "Brett Kavanaugh", "Amy Coney Barrett", "Ketanji Brown Jackson"],
+    'Year Appointed': [1789, 1795, 1796, 1801, 1836, 1864, 1874, 1888, 1910, 1921, 1930, 1941, 1946, 1953, 1969, 1986, 2005, 1991, 1993, 1994, 2006, 2009, 2010, 2017, 2018, 2020, 2022],
+    'Race': ["White", "White", "White", "White", "White", "White", "White", "White", "White", "White", "White", "White", "White", "White", "White", "White", "White", "Black", "White", "White", "White", "Hispanic", "White", "White", "White", "White", "Black"]
 }
+df = pd.DataFrame(data)
 
-# Assign colors to justices based on their state
-justices['Color'] = justices['State From'].map(state_colors)
+# Creating the stacked bar chart
+race_counts = df.groupby(['Year Appointed', 'Race']).size().unstack().fillna(0)
+fig, ax = plt.subplots(figsize=(12, 6))
+race_counts.cumsum().plot(kind='bar', stacked=True, ax=ax)
 
-# Title
-st.title('Supreme Court Justices and Racial Equality Cases Analysis')
-
-# Gender Distribution
-st.header('Gender Distribution of Supreme Court Justices')
-if 'Gender' in justices.columns:
-    gender_counts = justices['Gender'].value_counts()
-    fig, ax = plt.subplots()
-    gender_counts.plot(kind='bar', color=['blue', 'pink'], ax=ax)
-    ax.set_title('Gender Distribution of Supreme Court Justices')
-    ax.set_xlabel('Gender')
-    ax.set_ylabel('Count')
-    st.pyplot(fig)
-
-# Race Distribution
-st.header('Race Distribution of Supreme Court Justices')
-if 'Race' in justices.columns:
-    race_counts = justices['Race'].value_counts()
-    fig, ax = plt.subplots()
-    race_counts.plot(kind='bar', color=['brown', 'tan', 'yellow', 'black', 'red'], ax=ax)
-    ax.set_title('Race Distribution of Supreme Court Justices')
-    ax.set_xlabel('Race')
-    ax.set_ylabel('Count')
-    st.pyplot(fig)
-
-# Supreme Court Cases Impacting Racial Equality
-st.header('Supreme Court Cases Impacting Racial Equality')
-fig, ax = plt.subplots()
-ax.plot(cases['Year'], cases['Case'], marker='o', linestyle='-', color='b')
-ax.set_title('Supreme Court Cases Impacting Racial Equality')
-ax.set_xlabel('Year')
-ax.set_ylabel('Case')
-ax.set_xticks(cases['Year'])
-ax.set_xticklabels(cases['Year'], rotation=45)
-ax.grid(True)
-st.pyplot(fig)
-
-# Impact Analysis - Waterfall Chart
-st.header('Impact of Supreme Court Cases on Racial Equality')
-fig = go.Figure(go.Waterfall(
-    name="Impact",
-    orientation="v",
-    measure=["relative"] * len(cases),
-    x=cases['Impact'],
-    y=cases['Year'],
-    connector={"line": {"color": "rgb(63, 63, 63)"}},
-))
-
-fig.update_layout(
-    title="Impact of Supreme Court Cases on Racial Equality",
-    xaxis_title="Impact",
-    yaxis_title="Year",
-    waterfallgroupgap=0.5
-)
-
-st.plotly_chart(fig)
-
-# Cases by Chief Justice
-st.header('Supreme Court Cases by Chief Justice')
-chief_justice_counts = cases['Chief Justice'].value_counts()
-fig, ax = plt.subplots()
-chief_justice_counts.plot(kind='bar', color='orange', ax=ax)
-ax.set_title('Supreme Court Cases by Chief Justice')
-ax.set_xlabel('Chief Justice')
-ax.set_ylabel('Count')
-st.pyplot(fig)
-
-# Cases Over Time
-st.header('Supreme Court Cases Impacting Racial Equality Over Time')
-fig, ax = plt.subplots()
-ax.plot(cases['Year'], cases['Case'], marker='o')
-ax.set_title('Supreme Court Cases Impacting Racial Equality Over Time')
-ax.set_xlabel('Year')
-ax.set_ylabel('Case')
-ax.grid(True)
-st.pyplot(fig)
-
-# Justices by State of Origin and Year Appointed
-st.header('Supreme Court Justices by Year Appointed and State of Origin')
-justices = justices.sort_values('Year Appointed')
-fig, ax = plt.subplots(figsize=(15, 10))
-bars = ax.barh(justices['Justice'], justices['Year Appointed'], color=justices['Color'])
-for bar, justice_name, year, color in zip(bars, justices['Justice'], justices['Year Appointed'], justices['Color']):
-    ax.text(bar.get_width(), bar.get_y() + bar.get_height()/2, f' {year}', va='center', ha='left', fontsize=8, color='black')
-    ax.text(bar.get_width() - 5, bar.get_y() + bar.get_height()/2, justice_name, va='center', ha='right', fontsize=8, color=color)
+ax.set_title('Diversity of Supreme Court Justices Over Time')
 ax.set_xlabel('Year Appointed')
-ax.set_ylabel('Justice Names')
-ax.set_title('Supreme Court Justices by Year Appointed and State of Origin')
-ax.grid(True)
+ax.set_ylabel('Number of Justices')
+ax.legend(title='Race')
+
 st.pyplot(fig)
+
+
+# Adding Tenure Length to the DataFrame
+data.update({
+    'Tenure Length': [6, 1, 4, 34, 28, 9, 14, 22, 11, 9, 11, 4, 7, 16, 17, 19, 19, 33, 27, 27, 18, 15, 14, 7, 6, 4, 2]
+})
+
+df = pd.DataFrame(data)
+
+# Grouping by year and race
+avg_tenure = df.groupby(['Year Appointed', 'Race'])['Tenure Length'].mean().unstack()
+
+# Creating the line chart
+fig, ax = plt.subplots(figsize=(12, 6))
+avg_tenure.plot(kind='line', ax=ax)
+
+ax.set_title('Average Tenure Length of Supreme Court Justices Over Time')
+ax.set_xlabel('Year Appointed')
+ax.set_ylabel('Average Tenure Length (years)')
+ax.legend(title='Race')
+
+st.pyplot(fig)
+
+
+import streamlit as st
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Creating the DataFrame for Supreme Court cases
+cases_data = {
+    'Case': ["Dred Scott v. Sandford", "Plessy v. Ferguson", "Brown v. Board of Education", "Loving v. Virginia", "Swann v. Charlotte-Mecklenburg", "Regents v. Bakke", "Grutter v. Bollinger", "Shelby County v. Holder"],
+    'Decision': ["African Americans could not be citizens", "Upheld 'separate but equal'", "Segregation in public schools unconstitutional", "Invalidated laws prohibiting interracial marriage", "Upheld use of busing for desegregation", "Race can be a factor in college admissions", "Upheld affirmative action in university admissions", "Struck down parts of the Voting Rights Act"],
+    'Year': [1857, 1896, 1954, 1967, 1971, 1978, 2003, 2013],
+    'Chief Justice': ["Roger B. Taney", "Melville Fuller", "Earl Warren", "Earl Warren", "Warren E. Burger", "Warren E. Burger", "William Rehnquist", "John Roberts"],
+    'Impact': ["Setback for racial equality, overturned by later amendments", "Legalized segregation", "Major victory for civil rights movement", "Ended race-based legal restrictions on marriage", "Promoted integration in schools", "Affirmed affirmative action with limitations", "Confirmed diversity as a compelling interest", "Weakened federal oversight of voting laws"]
+}
+cases_df = pd.DataFrame(cases_data)
+
+# Creating the improved timeline chart
+fig, ax = plt.subplots(figsize=(12, 6))
+
+# Plotting the cases as scatter points with different colors
+colors = ['b', 'g', 'r', 'c', 'm', 'y', 'k', 'orange']
+ax.scatter(cases_df['Year'], [1]*len(cases_df), c=colors[:len(cases_df)], s=100)
+
+# Adding annotations for each case with matching colors
+for i, (index, row) in enumerate(cases_df.iterrows()):
+    ax.annotate(f"{row['Case']} ({row['Year']})", (row['Year'], 1),
+                textcoords="offset points", xytext=(0,10), ha='left', rotation=50,
+                fontsize=10, weight='bold', color=colors[i])
+
+# Adding title, labels, and grid
+ax.set_title('Impact of Key Supreme Court Cases on Racial Equality', fontsize=14)
+ax.set_xlabel('Year', fontsize=12)
+ax.set_ylabel('Cases Names', fontsize=12)
+ax.yaxis.set_ticks([])  # Hide the y-axis ticks but keep the label
+
+# Improving the x-axis formatting
+ax.xaxis.set_major_locator(plt.MaxNLocator(integer=True))
+
+# Adding grid for better readability
+ax.grid(True, axis='x', linestyle='--', alpha=0.7)
+
+st.pyplot(fig)
+

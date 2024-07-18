@@ -11,17 +11,17 @@ This project provides a data analysis dashboard for visualizing information abou
 ## Visualizations
 The dashboard includes the following visualizations:
 
-### Supreme Court Cases Impacting Racial Equality
-A bar chart showing significant Supreme Court cases impacting racial equality over the years.
-![Cases Impacting Racial Equality]()
+### How has the diversity of the Supreme Court Justices changed over time?
+A stacked bar chart showing the racial composition of Supreme Court Justices over the years.
+![Cases Impacting Racial Equality](images/Diversity.png)
 
-### Cases Over Time
-A line chart showing significant Supreme Court cases impacting racial equality over time.
-![Cases Over Time]()
+### What has been the average tenure length of Supreme Court Justices over time, and how does it differ by race?
+A line chart showing the average tenure length of Supreme Court Justices over time, differentiated by race.
+![Cases Over Time](images/Tenure.png)
 
-### Justices by Year Appointed and State of Origin
-A horizontal bar chart showing Supreme Court Justices by year appointed and state of origin, with colors representing the states.
-![Justices by Year and State]()
+### What has been the impact of key Supreme Court cases on racial equality?
+A timeline chart showing the major Supreme Court cases related to racial equality and their impact.
+![Justices by Year and State](images/Impact.png)
 
 ## Running the Dashboard
 To run the dashboard locally:
