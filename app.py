@@ -1,3 +1,4 @@
+import plotly.graph_objects as go
 import pandas as pd
 import matplotlib.pyplot as plt
 import streamlit as st
@@ -47,23 +48,37 @@ if 'Race' in justices.columns:
 # Supreme Court Cases Impacting Racial Equality
 st.header('Supreme Court Cases Impacting Racial Equality')
 fig, ax = plt.subplots()
-ax.bar(cases['Year'], cases['Case'])
+ax.plot(cases['Year'], cases['Case'], marker='o', linestyle='-', color='b')
 ax.set_title('Supreme Court Cases Impacting Racial Equality')
 ax.set_xlabel('Year')
 ax.set_ylabel('Case')
 ax.set_xticks(cases['Year'])
 ax.set_xticklabels(cases['Year'], rotation=45)
+ax.grid(True)
 st.pyplot(fig)
 
-# Impact Analysis
+# Impact Analysis - Waterfall Chart
 st.header('Impact of Supreme Court Cases on Racial Equality')
-impact_counts = cases['Impact'].value_counts()
-fig, ax = plt.subplots()
-impact_counts.plot(kind='bar', color='purple', ax=ax)
-ax.set_title('Impact of Supreme Court Cases on Racial Equality')
-ax.set_xlabel('Impact')
-ax.set_ylabel('Count')
-st.pyplot(fig)
+impact_counts = cases['Impact'].value_counts().reset_index()
+impact_counts.columns = ['Impact', 'Count']
+
+fig = go.Figure(go.Waterfall(
+    name="Impact",
+    orientation="v",
+    measure=["relative"] * len(impact_counts),
+    x=impact_counts['Impact'],
+    y=impact_counts['Count'],
+    connector={"line": {"color": "rgb(63, 63, 63)"}},
+))
+
+fig.update_layout(
+    title="Impact of Supreme Court Cases on Racial Equality",
+    xaxis_title="Impact",
+    yaxis_title="Count",
+    waterfallgroupgap=0.5
+)
+
+st.plotly_chart(fig)
 
 # Cases by Chief Justice
 st.header('Supreme Court Cases by Chief Justice')
