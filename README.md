@@ -26,22 +26,32 @@ A horizontal bar chart showing Supreme Court Justices by year appointed and stat
 ## Running the Dashboard
 To run the dashboard locally:
 
-1. Navigate to the project directory:
+1. **Install Command Line Tools for Xcode (macOS only)** (if not already installed):
+    ```bash
+    xcode-select --install
+    ```
+
+2. **Navigate to the project directory**:
     ```bash
     cd Supreme-Court
     ```
 
-2. Install the required Python packages:
+3. **Install the required Python packages**:
     ```bash
     pip install -r requirements.txt
     ```
 
-3. Run the Streamlit app:
+4. **Install Watchdog (optional but recommended)**:
+    ```bash
+    pip install watchdog
+    ```
+
+5. **Run the Streamlit app**:
     ```bash
     streamlit run app.py
     ```
 
-4. Open your web browser and go to the URL provided by Streamlit to view the dashboard.
+6. Open your web browser and go to the URL provided by Streamlit to view the dashboard.
 
 ## Deployment
 The app can be deployed to Streamlit Cloud for easy sharing and access. Ensure your GitHub repository is public, and follow the deployment steps on Streamlit Cloud.
