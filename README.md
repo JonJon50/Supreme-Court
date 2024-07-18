@@ -13,15 +13,15 @@ The dashboard includes the following visualizations:
 
 ### Supreme Court Cases Impacting Racial Equality
 A bar chart showing significant Supreme Court cases impacting racial equality over the years.
-![Cases Impacting Racial Equality](images/Racial-Equlity.png)
+![Cases Impacting Racial Equality]()
 
 ### Cases Over Time
 A line chart showing significant Supreme Court cases impacting racial equality over time.
-![Cases Over Time](images/over-time.png)
+![Cases Over Time]()
 
 ### Justices by Year Appointed and State of Origin
 A horizontal bar chart showing Supreme Court Justices by year appointed and state of origin, with colors representing the states.
-![Justices by Year and State](images/SOO.png)
+![Justices by Year and State]()
 
 ## Running the Dashboard
 To run the dashboard locally:

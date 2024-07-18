@@ -59,22 +59,19 @@ st.pyplot(fig)
 
 # Impact Analysis - Waterfall Chart
 st.header('Impact of Supreme Court Cases on Racial Equality')
-impact_counts = cases['Impact'].value_counts().reset_index()
-impact_counts.columns = ['Impact', 'Count']
-
 fig = go.Figure(go.Waterfall(
     name="Impact",
     orientation="v",
-    measure=["relative"] * len(impact_counts),
-    x=impact_counts['Impact'],
-    y=impact_counts['Count'],
+    measure=["relative"] * len(cases),
+    x=cases['Impact'],
+    y=cases['Year'],
     connector={"line": {"color": "rgb(63, 63, 63)"}},
 ))
 
 fig.update_layout(
     title="Impact of Supreme Court Cases on Racial Equality",
     xaxis_title="Impact",
-    yaxis_title="Count",
+    yaxis_title="Year",
     waterfallgroupgap=0.5
 )
 
