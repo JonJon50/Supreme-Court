@@ -23,6 +23,13 @@ A line chart showing the average tenure length of Supreme Court Justices over ti
 A timeline chart showing the major Supreme Court cases related to racial equality and their impact.
 ![Justices by Year and State](images/Impact.png)
 
+
+<h2 id="credits">Collaborators/Creditors 🏆</h2>
+
+👨‍💻 I'm Coding BootCamp Alumni of [UCF](https://www.ucf.edu/students/) and Associate Data Analst [DataCamp](https://www.datacamp.com/portfolio/ginuwine104)  ⭐️
+
+- [Profile]( https://www.linkedin.com/in/john-hagens-55b15212a/  " John Hagens ") -- John Hagens
+
 ## Running the Dashboard
 To run the dashboard locally:
 
